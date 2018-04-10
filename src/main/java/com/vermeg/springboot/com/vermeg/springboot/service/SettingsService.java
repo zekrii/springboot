@@ -144,7 +144,7 @@ public class SettingsService {
         String filepath = "C:\\Users\\user\\Desktop\\STAGE PFE\\logs/ExtractDwhData_2018-02-07_104202.log";
 
 
-        // Read in file to determine how many lines it has
+
         FileInputStream in = null;
         try {
             in = new FileInputStream(filepath);

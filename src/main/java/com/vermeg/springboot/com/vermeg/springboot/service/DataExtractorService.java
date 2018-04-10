@@ -1,9 +1,12 @@
 package com.vermeg.springboot.com.vermeg.springboot.service;
 
+import org.slf4j.LoggerFactory;
+
 import java.io.*;
 import java.util.logging.Logger;
 
 public class DataExtractorService {
+    final static org.slf4j.Logger logger = LoggerFactory.getLogger(DataExtractorService.class);
 
 
     public int numberOfLines(String filepath) throws IOException {

@@ -4,6 +4,7 @@ import com.vermeg.springboot.com.vermeg.springboot.domain.DataWhJob;
 import com.vermeg.springboot.com.vermeg.springboot.domain.SqleXTractionConfig;
 import com.vermeg.springboot.com.vermeg.springboot.domain.TableExtracted;
 import com.vermeg.springboot.com.vermeg.springboot.domain.XmlToCsv;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.util.Date;
@@ -11,6 +12,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StepExtractionService {
+
+    final static org.slf4j.Logger logger = LoggerFactory.getLogger(StepExtractionService.class);
     public void runningMode(String txt) {
         //  String txt="Running in FORCE LOAD mode !";
 

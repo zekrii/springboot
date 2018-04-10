@@ -12,7 +12,7 @@ public class AwkTest {
         Runtime r = Runtime.getRuntime();
         Process p = null;
         try {
-            p = r.exec("awk -F\":\" '/in/ {print $3}' file.awk");
+            p = r.exec("awk -F\":\" '/in/ {print $3}' script.awk");
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -29,7 +29,7 @@ public class AwkTest {
             System.out.println(valor);
         }*/
         String command="awk  ' /[/','/]/'  E:/ExtractDwhData_2018-02-07_104202.log > E:/doc.txt";
-        String cc="awk  ' /BODY = {/',/}/  /home/sana/Documents/logg/document.txt  >/home/sana/Documents/doc.txt";
+
 
 
        String c="awk  \" /Solife DWH data EXTRACTION/\",/REPORT/  E:/ExtractDwhData_2018-02-07_104202.log > E:/doc.txt";

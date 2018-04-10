@@ -1,5 +1,7 @@
 package com.vermeg.springboot.com.vermeg.springboot.service;
 
+import org.slf4j.LoggerFactory;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +10,10 @@ public class fileSeperator {
     private int Id;
     private String directory;
     private String fileName;
+
+
+
+    final static org.slf4j.Logger logger = LoggerFactory.getLogger(fileSeperator.class);
 
     public int getId() {
         return Id;

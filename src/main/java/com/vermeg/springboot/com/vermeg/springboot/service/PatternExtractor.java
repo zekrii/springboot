@@ -2,16 +2,22 @@ package com.vermeg.springboot.com.vermeg.springboot.service;
 
 
 import com.sun.org.apache.xml.internal.utils.StringBufferPool;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
 public class PatternExtractor {
+
+    final static org.slf4j.Logger logger = LoggerFactory.getLogger(PatternExtractor.class);
+
+
 
     public Date timeExtractor(String txt) {
         String re1 = "((?:2|1)\\d{3}(?:-|\\/)(?:(?:0[1-9])|(?:1[0-2]))(?:-|\\/)(?:(?:0[1-9])|(?:[1-2][0-9])|(?:3[0-1]))(?:T|\\s)(?:(?:[0-1][0-9])|(?:2[0-3])):(?:[0-5][0-9]):(?:[0-5][0-9]))";    // Time St0amp 1
@@ -44,14 +50,14 @@ public class PatternExtractor {
     public void versionITKDWH(String txt) {
        // String txt="build #265 on 2018-01-04 08:22:32";
 
-        String re1="(build)";	// Word 1
+        String re1="(build)";
         String re2=".*?";
         String re3="(#)";
         String re4="(2)";
         String re5="(\\d)";
         String re6="(\\d)";
         String re7=".*?";
-        String re8="((?:[a-z][a-z]+))";	// Word 2
+        String re8="((?:[a-z][a-z]+))";
         String re9=".*?";
         String re10="((?:2|1)\\d{3}(?:-|\\/)(?:(?:0[1-9])|(?:1[0-2]))(?:-|\\/)(?:(?:0[1-9])|(?:[1-2][0-9])|(?:3[0-1]))(?:T|\\s)(?:(?:[0-1][0-9])|(?:2[0-3])):(?:[0-5][0-9]):(?:[0-5][0-9]))";	// Time Stamp 1
 
@@ -75,16 +81,16 @@ public class PatternExtractor {
     public void extractionOptions(String txt){
        // String txt="Specified options: -G -SS";
 
-        String re1="(Specified)";	// Word 1
-        String re2="(\\s+)";	// White Space 1
-        String re3="(options)";	// Word 2
+        String re1="(Specified)";
+        String re2="(\\s+)";
+        String re3="(options)";
         String re4="(.)";
         String re5="(\\s+)";
         String re6="(.)";
         String re7="((?:[a-z][a-z0-9_]*))";
         String re8="(\\s+)";
         String re9="(.)";
-        String re10="((?:[a-z][a-z0-9_]*))";	// Variable Name 2
+        String re10="((?:[a-z][a-z0-9_]*))";	// Variable Name
 
         Pattern p = Pattern.compile(re1+re2+re3+re4+re5+re6+re7+re8+re9+re10,Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
         Matcher m = p.matcher(txt);
