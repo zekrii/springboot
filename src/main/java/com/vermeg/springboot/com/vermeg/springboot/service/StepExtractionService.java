@@ -4,6 +4,7 @@ import com.vermeg.springboot.com.vermeg.springboot.domain.DataWhJob;
 import com.vermeg.springboot.com.vermeg.springboot.domain.SqleXTractionConfig;
 import com.vermeg.springboot.com.vermeg.springboot.domain.TableExtracted;
 import com.vermeg.springboot.com.vermeg.springboot.domain.XmlToCsv;
+import org.apache.log4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
@@ -14,6 +15,7 @@ import java.util.regex.Pattern;
 public class StepExtractionService {
 
     final static org.slf4j.Logger logger = LoggerFactory.getLogger(StepExtractionService.class);
+
     public void runningMode(String txt) {
         //  String txt="Running in FORCE LOAD mode !";
 
@@ -729,7 +731,20 @@ public class StepExtractionService {
         }
     }
     public void xmlToCsvII(String txt){
-        String re21=".*?";
+        String re21=".*?";String s="(conversion)"+".*?"+
+        "(of)"+
+        ".*?"+
+        "(DWH)"+
+        "(_)"+
+        "((?:[a-z][a-z\\.\\d\\-]+)\\.(?:[a-z][a-z\\-]+))(?![\\w\\.])"+
+        ".*?"+
+        "((?:[a-z][a-z]+))"+
+        ".*?"+
+        "((?:[a-z][a-z]+))"+
+        ".*?"+
+        "([+-]?\\d*\\.\\d+)(?![-+0-9\\.])"+
+        ".*?"+
+        "(seconds)";
         String re22="(conversion)";
         String re32=".*?";
         String re42="(of)";
@@ -792,7 +807,8 @@ public class StepExtractionService {
         int nbr=0;
 
         while ((strLine  = br.readLine()) != null) {
-       /* if (strLine.contains("reporting job DWH_")){
+            ses.xmlToCsvII(strLine);
+        if (strLine.contains("reporting job DWH_")){
             if(strLine.contains("minutes")){
                 ses.jobReport(strLine);
             }
@@ -800,7 +816,7 @@ public class StepExtractionService {
           //  System.out.println("a");
 
             ses.reportJobII(strLine);
-        }*/
+        }
             // ses.extractionInTables(strLine);
             //ses.runningMode(strLine);
             //ses.executingMode(strLine);
@@ -817,12 +833,12 @@ public class StepExtractionService {
                //ses.satats(ss);
 
             }
-            if (strLine.contains("[   XmlToCsvConverter]")){
+            if (strLine.contains("DWH_TaxType-2152-018-02-07.xml")){
 
              //  ses.xmlToCsv(strLine);
-                //ses.xmlToCsvII(strLine);
 
-                //counter++;
+
+                counter++;
 
 
             }
